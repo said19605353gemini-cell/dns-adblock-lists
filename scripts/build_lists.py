@@ -136,6 +136,80 @@ def main() -> None:
         encoding="utf-8",
     )
 
+    html = f"""<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNS & uBlock Reklam Engelleyici</title>
+  <style>
+    :root {{ --bg:#0b0f19; --card:#131a2a; --text:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --ok:#22c55e; --border:#1f2937; }}
+    * {{ box-sizing:border-box; }}
+    body {{ margin:0; font-family:system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }}
+    .wrap {{ max-width:860px; margin:0 auto; padding:32px 16px; }}
+    h1 {{ margin:0 0 8px; font-size:1.9rem; }}
+    .sub {{ color:var(--muted); margin-bottom:24px; }}
+    .stats {{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }}
+    .pill {{ background:var(--card); border:1px solid var(--border); padding:8px 14px; border-radius:999px; font-size:.9rem; }}
+    .pill b {{ color:var(--accent); }}
+    .card {{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; margin-bottom:16px; }}
+    .card h2 {{ margin:0 0 10px; font-size:1.15rem; color:var(--accent); }}
+    .row {{ display:flex; gap:8px; align-items:center; margin:8px 0; }}
+    input {{ flex:1; background:#090d16; color:var(--text); border:1px solid var(--border); border-radius:8px; padding:10px; font-family:monospace; font-size:.88rem; }}
+    button {{ background:var(--accent); color:#04101d; border:0; border-radius:8px; padding:10px 14px; font-weight:600; cursor:pointer; }}
+    button:hover {{ opacity:.9; }}
+    ul {{ margin:8px 0 0 18px; padding:0; color:var(--muted); }}
+    li {{ margin:4px 0; }}
+    code {{ background:#090d16; padding:2px 6px; border-radius:4px; color:var(--text); }}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>DNS & uBlock Reklam Engelleyici</h1>
+    <p class="sub">GitHub Actions ile her gün otomatik güncellenen modem, telefon (APK) ve tarayıcı reklam engelleme listeleri.</p>
+    <div class="stats">
+      <div class="pill">Engellenen Domain: <b>{len(sorted_domains):,}</b></div>
+      <div class="pill">Son Güncelleme: <b>{now}</b></div>
+    </div>
+
+    <div class="card">
+      <h2>Liste Adresleri (Tek Tıkla Kopyala)</h2>
+      <div class="row"><input readonly value="https://said19605353gemini-cell.github.io/dns-adblock-lists/hosts.txt" id="u1" /><button onclick="cp('u1',this)">hosts.txt (APK / Modem)</button></div>
+      <div class="row"><input readonly value="https://said19605353gemini-cell.github.io/dns-adblock-lists/domains.txt" id="u2" /><button onclick="cp('u2',this)">domains.txt (NextDNS / Pi-hole)</button></div>
+      <div class="row"><input readonly value="https://said19605353gemini-cell.github.io/dns-adblock-lists/adblock.txt" id="u3" /><button onclick="cp('u3',this)">adblock.txt (uBlock Origin)</button></div>
+      <div class="row"><input readonly value="https://said19605353gemini-cell.github.io/dns-adblock-lists/dnsmasq.conf" id="u4" /><button onclick="cp('u4',this)">dnsmasq.conf (Router)</button></div>
+    </div>
+
+    <div class="card">
+      <h2>Telefonda (Android APK) Kurulum</h2>
+      <ul>
+        <li><b>AdAway (Root gerekmez):</b> VPN modunu seçin → Hosts Sources → <code>hosts.txt</code> linkini ekleyin.</li>
+        <li><b>RethinkDNS / personalDNSfilter:</b> Özel filtre URL'si kısmına <code>hosts.txt</code> veya <code>domains.txt</code> ekleyin.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Modem ve Gerçek IPv4 DNS Kurulumu</h2>
+      <ul>
+        <li><b>OpenWrt / Keenetic / Asuswrt:</b> <code>dnsmasq.conf</code> dosyasını yönlendiricinize bağlayın.</li>
+        <li><b>Standart Modem (IPv4 DNS):</b> Ücretsiz <b>NextDNS</b> veya <b>AdGuard DNS</b> hesabınıza <code>domains.txt</code> linkini ekleyin; size verilen IPv4 adresini modeme yazın.</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    function cp(id, btn) {{
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.value);
+      const old = btn.textContent;
+      btn.textContent = "Kopyalandı!";
+      setTimeout(() => btn.textContent = old, 1500);
+    }}
+  </script>
+</body>
+</html>
+"""
+    (DIST / "index.html").write_text(html, encoding="utf-8")
+
     print(f"Tamamlandi! Toplam {len(sorted_domains)} domain dist/ klasorune yazildi.")
 
 
