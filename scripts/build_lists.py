@@ -181,18 +181,20 @@ def main() -> None:
     </div>
 
     <div class="card">
-      <h2>Telefonda (Android APK) Kurulum</h2>
+      <h2>Telefonda (Android APK - Tamamen Ücretsiz & Açık Kaynak)</h2>
       <ul>
-        <li><b>AdAway (Root gerekmez):</b> VPN modunu seçin → Hosts Sources → <code>hosts.txt</code> linkini ekleyin.</li>
-        <li><b>RethinkDNS / personalDNSfilter:</b> Özel filtre URL'si kısmına <code>hosts.txt</code> veya <code>domains.txt</code> ekleyin.</li>
+        <li><b>AdAway (F-Droid / GitHub):</b> Root gerektirmez (VPN modu) → Hosts Sources → <code>hosts.txt</code> linkini ekleyin.</li>
+        <li><b>RethinkDNS (F-Droid / GitHub):</b> Açık kaynak DNS + Güvenlik Duvarı → Özel liste kısmına <code>hosts.txt</code> veya <code>domains.txt</code> ekleyin.</li>
+        <li><b>personalDNSfilter (F-Droid / GitHub):</b> Çok hafif açık kaynak DNS engelleyici → <code>hosts.txt</code> linkini ekleyin.</li>
       </ul>
     </div>
 
     <div class="card">
-      <h2>Modem ve Gerçek IPv4 DNS Kurulumu</h2>
+      <h2>Modem, Ev Ağı ve Tarayıcı (Ücretsiz & Açık Kaynak)</h2>
       <ul>
-        <li><b>OpenWrt / Keenetic / Asuswrt:</b> <code>dnsmasq.conf</code> dosyasını yönlendiricinize bağlayın.</li>
-        <li><b>Standart Modem (IPv4 DNS):</b> Ücretsiz <b>NextDNS</b> veya <b>AdGuard DNS</b> hesabınıza <code>domains.txt</code> linkini ekleyin; size verilen IPv4 adresini modeme yazın.</li>
+        <li><b>uBlock Origin (Tarayıcı):</b> Ayarlar → Filtre listeleri → İçe aktar kısmına <code>adblock.txt</code> linkini ekleyin.</li>
+        <li><b>OpenWrt / Router (dnsmasq):</b> <code>dnsmasq.conf</code> dosyasını yönlendiricinize bağlayın.</li>
+        <li><b>Pi-hole / AdGuard Home (Kendi Cihazınız):</b> Raspberry Pi veya eski bir PC'ye kurup <code>domains.txt</code> (veya <code>adblock.txt</code>) linkini ekleyin; tüm ev ağına ücretsiz IPv4 DNS dağıtır.</li>
       </ul>
     </div>
   </div>
