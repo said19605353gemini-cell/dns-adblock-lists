@@ -1,0 +1,3 @@
+# Özel Engellenecek Domainler (Her satıra bir domain)
+# Örnek:
+# ads.example.com

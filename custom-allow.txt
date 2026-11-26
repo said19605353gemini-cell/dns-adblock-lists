@@ -1,0 +1,4 @@
+# İzin Verilecek (Whitelist) Domainler (Her satıra bir domain)
+# Yanlışlıkla engellenen siteleri buraya ekleyin.
+# Örnek:
+# s.youtube.com
